@@ -14,4 +14,4 @@ do
     wget --output-document=../data/bitcoinity_data_${element}_pct.csv $finalurl
 done
 
-
+../bin/bookratios.py

@@ -1,7 +1,9 @@
 [fetch]
 period=360
+#period=1
 baseurl=https://data.bitcoinity.org/export_data.csv?bp=BOOKPCT&bu=c&currency=USD&data_type=bidask_sum&exchange=coinbase&r=hour&t=m&timespan=PERIODd
-
+#baseurl=https://data.bitcoinity.org/export_data.csv?bp=BOOKPCT&bu=c&currency=USD&data_type=bidask_sum&exchange=coinbase&t=m&timespan=PERIODh
 [process]
 datapath=../data/
+output=../output/
 depths=1,5,10

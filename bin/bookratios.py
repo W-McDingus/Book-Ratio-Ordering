@@ -3,8 +3,13 @@ import sys
 import os
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 sys.dont_write_bytecode = True
 sys.path.insert(0, "../lib")
+sys.path.insert(0, "/Users/Weston/code/lib")
+sys.dont_write_bytecode = True
 from botconfigparser import BotConfigParser
 from logger import LOGINIT,LOG,LOGE
 
@@ -50,6 +55,20 @@ def combine_dfs(dfs, depths):
         df = df.join(dfs[i]['bookratio_{0}_pct'.format(depth)], on='Time')
     df.index = df.index.strftime('%Y%m%d%H%M%S')
     return df
+
+def plot_color(row):
+    order = row['order']
+    num2color = {0:"green",1:"blue", 2:"blue", 3:"blue", 4:"blue", 5:"red"}
+    return num2color[order]
+
+def plot_analysis(df):
+    colors = df.apply (lambda row: plot_color(row), axis=1)
+    fig = go.Figure(data=go.Scatter(x=df.index, y=df['price'], mode='lines+markers',
+            marker=dict(
+            color=colors,
+            line_width=1)
+            ))
+    fig.show()
 
 if __name__ == '__main__':
     LOGINIT('bookratios')
