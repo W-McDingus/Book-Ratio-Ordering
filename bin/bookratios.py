@@ -4,8 +4,6 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 sys.dont_write_bytecode = True
 sys.path.insert(0, "../lib")
 sys.path.insert(0, "/Users/Weston/code/lib")
@@ -86,5 +84,7 @@ if __name__ == '__main__':
     analysis_df = combine_dfs(bookratio_dfs, depths)
     analysis_df['order'] = analysis_df.apply(lambda row: analyze_data(row), axis=1)
     LOG('OUT: saving analysis dataframe as CSV to path:', cfg['output'])
+    buy_sell_signals = analysis_df['order'].tolist()
+    print('Signals:\n', buy_sell_signals[-10:])
     analysis_df.to_csv(cfg['output'] + 'bookratios_analysis.csv')
 
