@@ -2,7 +2,7 @@
 
 Developed with @harishkumar92
 
-Compares book ratio for different depths (1%/5%/10%)
+Compares book ratio for different depths (1%/5%/10%) -- when specific structuring of ratio occurs, buy signals tend to generate positive alpha.
 
 Default exchange = Coinbase
 
